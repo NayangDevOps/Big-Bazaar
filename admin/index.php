@@ -1,51 +1,43 @@
 <?php 
 	session_start();
-	//error_reporting(0);
 	include("include/connection.php");
-	/*?>if(isset($_SESSION['session']))
-	{
-		echo "<script language='javascript'>document.location='dashboard.php'</script>" ;
-		exit;
-	}<?php */
 ?>
 <?php
 	$error = '';
-	if(isset($_POST['submit']))
-	{
-
+	if(isset($_POST['submit'])) {
     	$user_nm = $_POST['user_nm'];
-    	$user_pass = $_POST['user_pass'];
-    
+    	$user_pass = $_POST['user_pass'];    
     	$login_query = "select * from login where user_name='".$user_nm."' and user_pass='".$user_pass."' ";
-    	$result_query = mysqli_query($con,$login_query);
-		
-		if(mysqli_num_rows($result_query) > 0)
-		{
+    	$result_query = mysqli_query($con,$login_query);		
+		if(mysqli_num_rows($result_query) > 0) {
 			$row = mysqli_fetch_array($result_query);
 			$_SESSION['session'] = $row;
 			echo "<script language='javascript'>document.location='dashboard.php';</script>";
-		}
-		else
-		{
+		} else {
 			$error = "Wrong Username or Password." ;
 		}
-
 	}
-
 ?>
 <!DOCTYPE html>
 <html class="h-100" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>BIG BAZZAR - LOGIN</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="img/png" sizes="16x16" href="img/B.png">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <link href="css/style.css" rel="stylesheet">    
 </head>
 
 <body class="h-100">
